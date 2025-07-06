@@ -1,0 +1,66 @@
+---
+import { ClientRouter } from 'astro:transitions'
+
+import '@/styles/global.css'
+import { fixedTitle } from '@/consts/pagesTitles'
+
+interface Props {
+  title: string
+  description?: string
+  canonical?: string
+  robots?: string
+}
+
+const {
+  title = fixedTitle,
+  description = 'Página principal de todos los proyectos realizados de devchallenges.io',
+  canonical,
+  robots,
+} = Astro.props
+
+---
+
+<html lang="es">
+	<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>
+          {title}
+        </title>
+    
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+        <link
+          rel="preload"
+          href="/fonts/Inter-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/Inter-Bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossorigin="anonymous"
+        />
+        <meta name="description" content={description} />
+        {canonical && <link rel="canonical" href={canonical} />}
+        {robots && <meta name="robots" content={robots} />}
+    
+        <meta property="og:url" content="https://devchallenges.aitormt.dev" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta
+          property="og:description"
+          content={description}
+        />
+        <meta property="og:image" content="https://devchallenges.aitormt.dev/og.jpg" />
+        <meta property="og:locale" content="es_ES" />
+        <meta property="og:site_name" content={title} />
+        <ClientRouter/>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
