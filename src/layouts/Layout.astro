@@ -4,8 +4,10 @@ import { ClientRouter } from 'astro:transitions'
 import '@/styles/global.css'
 import { fixedTitle } from '@/consts/pagesTitles'
 
+
 interface Props {
   title: string
+  fonts: string[]
   description?: string
   canonical?: string
   robots?: string
@@ -13,6 +15,7 @@ interface Props {
 
 const {
   title = fixedTitle,
+  fonts,
   description = 'Página principal de todos los proyectos realizados de devchallenges.io',
   canonical,
   robots,
@@ -30,20 +33,17 @@ const {
     
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
-        <link
-          rel="preload"
-          href="/fonts/Inter-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossorigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Inter-Bold.woff2"
-          as="font"
-          type="font/woff2"
-          crossorigin="anonymous"
-        />
+        {
+          fonts.map((font) => (
+            <link
+              rel="preload"
+              href={font}
+              as="font"
+              type="font/woff2"
+              crossorigin="anonymous"
+            />
+          ))
+        }
         <meta name="description" content={description} />
         {canonical && <link rel="canonical" href={canonical} />}
         {robots && <meta name="robots" content={robots} />}

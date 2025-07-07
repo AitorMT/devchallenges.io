@@ -1,7 +1,71 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { fonts } from "@/consts/fonts";
+import Image from "astro/components/Image.astro";
+import cactus from "@/assets/blog-card/Cactus.webp"
 ---
 
-<Layout title="Minimal Blog Card - devchallenges.io"> 
-
+<Layout title="Minimal Blog Card - devchallenges.io" fonts={fonts.Sora}> 
+    <div class="w-dvw h-dvh flex items-center justify-center bg-[var(--bgColor)] overflow-hidden p-4">
+        <div class="w-[367px] h-[387px] bg-[var(--bgColor)] rounded-lg shadow-[var(--boxShadow)] p-4">
+            <Image src={cactus} alt={'Cactus'} class={'rounded-lg'} loading="eager" />
+            <div class="py-1 w-fit px-3 bg-[rgba(var(--colorTag),0.05)] rounded-full  flex items-center justify-center ">
+                <span class="font-semibold tag">Design</span>
+            </div>
+        </div>
+    </div>
 </Layout>
+
+
+<style>
+
+:root{
+    --font-family: 'Sora', 'Adjusted Arial Fallback';
+    --boxShadow: 8px 8px 20px 0px rgba(85, 85, 85, 0.08);
+    --fontTitle: 1.125rem;
+    --fontBody:0.875rem;
+    --fontSmallText:0.75rem;
+    --fontTag:0.625rem;
+    --colorTag: 124, 25, 238;
+    --colorBgPicture:#F2EAFD;
+    --colorText:#E5EAF0;
+    --bgColor:#FFFFFF;
+    --bgColorCard:#FAFAF9;
+    --colorTextBold:#20293A;
+    --colorTextLight:#394150;
+}
+
+.tag{
+    color: rgb(var(--colorTag));
+    font-size: var(--fontTag);
+}
+
+
+@font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+  
+  @font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora/Sora-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora/Sora-Bold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  html{
+    font-family: var(--font-family);
+  }
+  
+</style>
