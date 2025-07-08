@@ -12,26 +12,27 @@ import cactus from '@/assets/blog-card/Cactus.webp'
 >
   <div class="flex h-dvh w-dvw items-center justify-center overflow-hidden bg-[var(--bgColor)] p-4">
     <div
-      class="relative flex h-[387px] w-[367px] flex-col gap-4 overflow-hidden rounded-lg bg-[var(--bgColor)] p-4 shadow-[var(--boxShadow)]"
+      class="relative flex h-[387px] w-[367px] flex-col gap-4 overflow-hidden rounded-lg bg-[var(--bgColor)] p-4 pb-5 shadow-[var(--boxShadow)]"
     >
       <Image
         src={cactus}
         alt={'Cactus'}
         class={'rounded-lg w-full h-full  object-cover'}
-        loading="eager"
+        fetchpriority={'high'}
       />
       <div
         class="flex w-fit items-center justify-center rounded-full bg-[rgba(var(--colorTag),0.05)] px-4 py-1"
       >
         <span class="tag font-semibold">Design</span>
       </div>
-      <div>
+      <div class="flex flex-col gap-1.5">
         <h1 class="title font-semibold">Embracing Minimalism</h1>
         <p class="text">
           From minimalist sculptures to minimalist paintings, this blog will inspire you to
           appreciate the beauty that lies in simplicity.
         </p>
-      </div><hr class="w-[calc(100% + 2rem)] -mx-4 border-[var(--colorHr)]" />
+      </div>
+      <hr class="w-[calc(100% + 2rem)] -mx-4 border-[var(--colorHr)]" />
       <p class="author">Annie Spratt</p>
     </div>
   </div>
@@ -49,7 +50,6 @@ import cactus from '@/assets/blog-card/Cactus.webp'
     --colorText: #626774;
     --colorHr: #e5eaf0;
     --bgColor: #ffffff;
-    --bgColorCard: #fafaf9;
     --colorTextBold: #20293a;
   }
 
