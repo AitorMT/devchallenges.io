@@ -1,0 +1,47 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+---
+
+<Layout
+  title="Business Blog Card - devchallenges.io"
+  description="A business blog card from Devchallenges.io!"
+  fonts={fonts.BusinessBlogCard}
+/>
+
+<style>
+  :root {
+    --font-family: 'Lato', 'Adjusted Arial Fallback';
+    --background: #f2f5f9;
+    --bgCard: #ffffff;
+    --colorTitle: #111729;
+    --colorText: #626774;
+  }
+
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins/Poppins-Bold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  html {
+    font-family: var(--font-family);
+  }
+</style>
