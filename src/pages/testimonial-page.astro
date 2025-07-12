@@ -1,0 +1,55 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+---
+
+<Layout
+  title="Testimonial Page - devchallenges.io"
+  description="A testimonial page from Devchallenges.io!"
+  fonts={fonts.TestimonialPage}
+/>
+
+<style>
+  :root {
+    --font-family: 'Sora', 'Adjusted Arial Fallback';
+    --boxShadow: 0px 30px 100px 0px rgba(17, 23, 41, 0.05);
+    --soraTitle: 2.25rem;
+    --soraBody: 1.25rem;
+    --soraBody2: 1rem;
+    --soraListItem: 0.875rem;
+    --goldColor: #f5c044;
+    --greenColor: #4ca154;
+    --blackColor: #18181b;
+    --mediumGray: #52525a;
+    --lightGray: #d4d4d8;
+    --bgColor: #fafaf9;
+    --bgColorCard: #ffffff;
+  }
+
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
+  @font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora/Sora-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora/Sora-Bold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  html {
+    font-family: var(--font-family);
+  }
+</style>
