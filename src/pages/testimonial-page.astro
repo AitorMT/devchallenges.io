@@ -1,0 +1,252 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+import Image from 'astro/components/Image.astro'
+import StarDegradation from '@/assets/testimonial-page/star-degradation.webp'
+import googleLogo from '@/assets/testimonial-page/google-logo.webp'
+import metaLogo from '@/assets/testimonial-page/meta-logo.webp'
+import starFill from '@/assets/testimonial-page/Star_fill.svg'
+import starFillGray from '@/assets/testimonial-page/Star_fill_gray.svg'
+---
+
+<Layout
+  title="Testimonial Page - devchallenges.io"
+  description="A testimonial page from Devchallenges.io!"
+  fonts={fonts.TestimonialPage}
+>
+  <div
+    class="flex h-dvh w-dvw flex-col gap-8 overflow-hidden bg-[var(--bgColor)] px-4 py-8 lg:p-12 xl:flex-row xl:p-20"
+  >
+    <div class="flex flex-col gap-5 xl:w-1/2 xl:self-center">
+      <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--goldColor)]">
+        <Image src={StarDegradation} alt="Star Fill" class="aspect-square h-1/2 w-1/2" />
+      </div>
+      <h1>Reviewers</h1>
+      <p class="description text-balance leading-8">
+        Reviewers is where people can access guidelines, checklists, and other tools to assist them
+        in reviewing papers or manuscripts. It provides a structured approach to ensure that the
+        review process is thorough, efficient, and consistent.
+      </p>
+      <ul class="checklist flex list-none flex-col gap-5">
+        <li class="flex items-center gap-2 text-[var(--mediumGray)]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            xmlns:v="https://vecta.io/nano"
+            ><path
+              fill-rule="evenodd"
+              d="M12 21a9 9 0 0 0 9-9c0-1.833-.548-3.539-1.49-4.961l-7.155 7.95a2 2 0 0 1-2.687.262L6.4 12.8a1 1 0 1 1 1.2-1.6l3.268 2.451 7.346-8.162A8.97 8.97 0 0 0 12 3a9 9 0 1 0 0 18z"
+              fill="#4ca154"></path></svg
+          >Checklist to Review an Academic Paper
+        </li>
+        <li class="flex items-center gap-2 text-[var(--mediumGray)]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            xmlns:v="https://vecta.io/nano"
+            ><path
+              fill-rule="evenodd"
+              d="M12 21a9 9 0 0 0 9-9c0-1.833-.548-3.539-1.49-4.961l-7.155 7.95a2 2 0 0 1-2.687.262L6.4 12.8a1 1 0 1 1 1.2-1.6l3.268 2.451 7.346-8.162A8.97 8.97 0 0 0 12 3a9 9 0 1 0 0 18z"
+              fill="#4ca154"></path></svg
+          >Peer Review Checklist
+        </li>
+        <li class="flex items-center gap-2 text-[var(--mediumGray)]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            xmlns:v="https://vecta.io/nano"
+            ><path
+              fill-rule="evenodd"
+              d="M12 21a9 9 0 0 0 9-9c0-1.833-.548-3.539-1.49-4.961l-7.155 7.95a2 2 0 0 1-2.687.262L6.4 12.8a1 1 0 1 1 1.2-1.6l3.268 2.451 7.346-8.162A8.97 8.97 0 0 0 12 3a9 9 0 1 0 0 18z"
+              fill="#4ca154"></path></svg
+          >Checklist for Editors, Reviewers, and Authors of SPIE Journals
+        </li>
+      </ul>
+    </div>
+    <div class="flex flex-col gap-5 sm:w-full sm:self-center lg:w-1/2">
+      {/* Google card */}
+      <div
+        class="flex h-[186px] flex-col justify-between rounded-xl bg-[var(--bgColorCard)] p-8 shadow-[var(--boxShadow)] sm:w-[362px] sm:self-end"
+      >
+        <div class="flex items-center gap-5">
+          <Image
+            src={googleLogo}
+            alt="Google Logo"
+            fetchpriority={'high'}
+            loading={'eager'}
+            class={'aspect-auto'}
+          />
+          <div class="flex items-center gap-1">
+            <Image
+              src={starFill}
+              alt="Star Fill"
+              fetchpriority={'high'}
+              loading={'eager'}
+              class={'aspect-square'}
+            />
+            <Image
+              src={starFill}
+              alt="Star Fill"
+              fetchpriority={'high'}
+              loading={'eager'}
+              class={'aspect-square'}
+            />
+            <Image
+              src={starFill}
+              alt="Star Fill"
+              fetchpriority={'high'}
+              loading={'eager'}
+              class={'aspect-square'}
+            />
+            <Image
+              src={starFill}
+              alt="Star Fill"
+              fetchpriority={'high'}
+              loading={'eager'}
+              class={'aspect-square'}
+            />
+            <Image
+              src={starFillGray}
+              alt="Star Fill"
+              fetchpriority={'high'}
+              loading={'eager'}
+              class={'aspect-square'}
+            />
+          </div>
+        </div>
+        <p class="name">Samantha Lee</p>
+        <p class="testimonial-text text-balance">
+          The checklist ensures that the review process is thorough
+        </p>
+      </div>
+      {/* End Google card */}
+      {/* Meta Card */}
+      <div
+        class="flex h-[186px] flex-col justify-between rounded-xl bg-[var(--bgColorCard)] p-8 shadow-[var(--boxShadow)] sm:w-[362px]"
+      >
+        <div class="flex items-center gap-5">
+          <Image
+            src={metaLogo}
+            alt="Google Logo"
+            fetchpriority={'high'}
+            loading={'eager'}
+            class={'aspect-auto'}
+          />
+          <div class="flex items-center gap-1">
+            <Image
+              src={starFill}
+              alt="Star Fill"
+              fetchpriority={'high'}
+              loading={'eager'}
+              class={'aspect-square'}
+            />
+            <Image
+              src={starFill}
+              alt="Star Fill"
+              fetchpriority={'high'}
+              loading={'eager'}
+              class={'aspect-square'}
+            />
+            <Image
+              src={starFill}
+              alt="Star Fill"
+              fetchpriority={'high'}
+              loading={'eager'}
+              class={'aspect-square'}
+            />
+            <Image
+              src={starFill}
+              alt="Star Fill"
+              fetchpriority={'high'}
+              loading={'eager'}
+              class={'aspect-square'}
+            />
+          </div>
+        </div>
+        <p class="name">Rachel Patel</p>
+        <p class="testimonial-text text-balance">
+          I highly recommend the Writecream Business Description
+        </p>
+      </div>
+      {/* End Meta Card */}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  :root {
+    --font-family: 'Sora', 'Adjusted Arial Fallback';
+    --boxShadow: 0px 30px 100px 0px rgba(17, 23, 41, 0.05);
+    --soraTitle: 2.25rem;
+    --soraBody: 1.25rem;
+    --soraBody2: 1rem;
+    --soraListItem: 0.875rem;
+    --goldColor: #f5c044;
+    --greenColor: #4ca154;
+    --blackColor: #18181b;
+    --mediumGray: #52525a;
+    --lightGray: #d4d4d8;
+    --bgColor: #fafaf9;
+    --bgColorCard: #ffffff;
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: var(--soraTitle);
+    color: var(--blackColor);
+  }
+
+  .description {
+    font-size: var(--soraBody);
+    color: var(--mediumGray);
+  }
+
+  .checklist {
+    font-size: var(--soraListItem);
+    color: var(--blackColor);
+  }
+
+  .name {
+    font-size: var(--soraBody2);
+    color: var(--blackColor);
+    font-weight: bold;
+  }
+
+  .testimonial-text {
+    font-size: var(--soraBody2);
+    color: var(--mediumGray);
+  }
+
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
+  @font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora/Sora-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora/Sora-Bold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  html {
+    font-family: var(--font-family);
+  }
+</style>
