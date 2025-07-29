@@ -1,0 +1,50 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+---
+
+<Layout
+  title="Music Player - devchallenges.io"
+  description="A music player page from Devchallenges.io!"
+  fonts={fonts.MusicPlayer}
+>
+  <div
+    class="flex h-dvh w-dvw flex-col overflow-hidden"
+  >
+  </div>
+</Layout>
+
+<style>
+  :root {
+    --font-family: 'Inter', 'Adjusted Arial Fallback';
+    --nameFontSize: 1rem;
+    --authorFontSize: 0.75rem;
+    --smallText:0.625rem;
+    --buttonShadow: 0px 8px 16px rgba(201, 59, 118, 0.25);
+    --color1: #C93B76;
+    --color2:#212936;
+    --color3: #4D5562;
+    --color4: #E5E7EB;
+    --color5: #121826a6;
+  }
+
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter/Inter-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  html {
+    font-family: var(--font-family);
+  }
+</style>
