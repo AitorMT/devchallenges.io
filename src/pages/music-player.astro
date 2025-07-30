@@ -6,6 +6,7 @@ import { songs } from '@/consts/songs'
 import PrevButton from '@/assets/music-player/svg/Stop_and_play_fill_back.svg'
 import NextButton from '@/assets/music-player/svg/Stop_and_play_fill.svg'
 import PlayButton from '@/assets/music-player/svg/Play_fill.svg'
+
 const currentSong = songs[0]
 ---
 
@@ -15,13 +16,13 @@ const currentSong = songs[0]
   fonts={fonts.MusicPlayer}
 >
   <div
-    class="grid h-dvh w-dvw place-items-center overflow-hidden bg-[url('../assets/music-player/images/gradient-bg-small.webp')] bg-cover bg-center bg-no-repeat sm:bg-[url('../assets/music-player/images/gradient-bg.webp')]"
+    class="grid aspect-square h-dvh w-dvw place-items-center overflow-hidden bg-[url('../assets/music-player/images/gradient-bg-small.webp')] bg-cover bg-center bg-no-repeat sm:bg-[url('../assets/music-player/images/gradient-bg.webp')]"
   >
-    <div class="flex h-[513px] w-[346px] flex-col rounded-2xl bg-[var(--color2)] p-5">
+    <div class="bg-[var(--color2)]/95 flex h-[513px] w-[346px] flex-col rounded-2xl p-5">
       <Image
         src={currentSong.img}
         alt={currentSong.title}
-        class="mb-4 rounded-2xl object-cover"
+        class="mb-4 aspect-auto rounded-2xl object-cover"
         width={306}
         height={228}
         id="coverImage"
@@ -46,16 +47,30 @@ const currentSong = songs[0]
             alt="Previous"
             fetchpriority={'high'}
             loading={'eager'}
+            class={'aspect-square'}
           /></button
         >
         <button
           id="playButton"
           class={'bg-[var(--color1)] p-2 rounded-full shadow-[var(--buttonShadow)]'}
         >
-          <Image src={PlayButton} alt="Play" fetchpriority={'high'} loading={'eager'} />
+          <Image
+            src={PlayButton}
+            alt="Play"
+            fetchpriority={'high'}
+            loading={'eager'}
+            id="playPauseIcon"
+            class={'aspect-square'}
+          />
         </button>
         <button id="nextButton">
-          <Image src={NextButton} alt="Next" fetchpriority={'high'} loading={'eager'} />
+          <Image
+            src={NextButton}
+            alt="Next"
+            fetchpriority={'high'}
+            loading={'eager'}
+            class={'aspect-square'}
+          />
         </button>
       </div>
     </div>
@@ -64,9 +79,11 @@ const currentSong = songs[0]
 
 <script>
   import { initMusicPlayer } from '../scripts/music-player.js'
+  import playIconUrl from '../assets/music-player/svg/Play_fill.svg?url'
+  import pauseIconUrl from '../assets/music-player/svg/Stop_fill.svg?url'
 
   document.addEventListener('DOMContentLoaded', () => {
-    initMusicPlayer()
+    initMusicPlayer(playIconUrl, pauseIconUrl)
   })
 </script>
 
