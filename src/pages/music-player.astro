@@ -1,0 +1,149 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+import { Image } from 'astro:assets'
+import { songs } from '@/consts/songs'
+import PrevButton from '@/assets/music-player/svg/Stop_and_play_fill_back.svg'
+import NextButton from '@/assets/music-player/svg/Stop_and_play_fill.svg'
+import PlayButton from '@/assets/music-player/svg/Play_fill.svg'
+const currentSong = songs[0]
+---
+
+<Layout
+  title="Music Player - devchallenges.io"
+  description="A music player page from Devchallenges.io!"
+  fonts={fonts.MusicPlayer}
+>
+  <div
+    class="grid aspect-square h-dvh w-dvw place-items-center overflow-hidden bg-[url('../assets/music-player/images/gradient-bg-small.webp')] bg-cover bg-center bg-no-repeat sm:bg-[url('../assets/music-player/images/gradient-bg.webp')]"
+  >
+    <div class="bg-[var(--color2)]/95 flex h-[513px] w-[346px] flex-col rounded-2xl p-5">
+      <Image
+        src={currentSong.img}
+        alt={currentSong.title}
+        class="mb-4 aspect-auto rounded-2xl"
+        width={306}
+        height={228}
+        id="coverImage"
+        fetchpriority={'high'}
+      />
+      <p id="songTitle">{currentSong.title}</p>
+      <p id="songAuthor">{currentSong.author}</p>
+      <div class="mb-8 mt-4 flex flex-col gap-1">
+        <div class="flex justify-between text-xs text-[var(--color3)]">
+          <span id="currentTime">0:00</span>
+          <span id="totalTime">0:00</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center gap-4">
+        <button id="prevButton"
+          ><Image
+            src={PrevButton}
+            alt="Previous"
+            fetchpriority={'high'}
+            class={'aspect-square'}
+          /></button
+        >
+        <button
+          id="playButton"
+          class={'bg-[var(--color1)] p-2 rounded-full shadow-[var(--buttonShadow)]'}
+        >
+          <Image
+            src={PlayButton}
+            alt="Play"
+            fetchpriority={'high'}
+            id="playPauseIcon"
+            class={'aspect-square'}
+          />
+        </button>
+        <button id="nextButton">
+          <Image src={NextButton} alt="Next" fetchpriority={'high'} class={'aspect-square'} />
+        </button>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { initMusicPlayer } from '../scripts/music-player.js'
+  import playIconUrl from '../assets/music-player/svg/Play_fill.svg?url'
+  import pauseIconUrl from '../assets/music-player/svg/Stop_fill.svg?url'
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initMusicPlayer(playIconUrl, pauseIconUrl)
+  })
+</script>
+
+<style slot="head">
+  :root {
+    --font-family: 'Inter', 'Adjusted Arial Fallback';
+    --nameFontSize: 1rem;
+    --authorFontSize: 0.75rem;
+    --smallText: 0.625rem;
+    --buttonShadow: 0px 8px 16px rgba(201, 59, 118, 0.25);
+    --color1: #c93b76;
+    --color2: #2a2335;
+    --color3: #4d5562;
+    --color4: #e5e7eb;
+    --color5: #121826a6;
+  }
+
+  .progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: var(--color4);
+    border-radius: 8px;
+    overflow: hidden;
+    filter: drop-shadow(0px 8px 16px rgba(201, 59, 118, 0.25));
+  }
+
+  .progress-fill {
+    width: 0%;
+    height: 100%;
+    background-color: var(--color1);
+    transition: width 0.2s ease;
+    border-radius: 0 8px 8px 0;
+    filter: drop-shadow(0px 8px 16px rgba(201, 59, 118, 0.25));
+  }
+
+  #songTitle {
+    font-size: var(--nameFontSize);
+    color: var(--color4);
+    text-align: center;
+  }
+
+  #songAuthor {
+    font-size: var(--authorFontSize);
+    color: var(--color3);
+    text-align: center;
+  }
+
+  #currentTime,
+  #totalTime {
+    font-size: var(--smallText);
+    color: var(--color3);
+  }
+
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter/Inter-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  html {
+    font-family: var(--font-family);
+  }
+</style>
