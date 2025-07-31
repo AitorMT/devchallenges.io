@@ -4,4 +4,5 @@ export const fonts = {
   BusinessBlogCard: ['/fonts/Poppins/Poppins-Medium.woff2', '/fonts/Lato/Lato-Regular.woff2'],
   TestimonialPage: ['/fonts/Sora/Sora-Regular.woff2', '/fonts/Sora/Sora-Bold.woff2'],
   MusicPlayer: ['/fonts/Inter/Inter-Regular.woff2'],
+  RandomQuote: ['/fonts/Outfit/Outfit-Regular.woff2'],
 }

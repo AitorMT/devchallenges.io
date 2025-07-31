@@ -1,0 +1,45 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+---
+
+<Layout
+  title="Random Quote - devchallenges.io"
+  description="A random quote page from Devchallenges.io!"
+  fonts={fonts.RandomQuote}
+>
+  <div class="flex h-dvh w-dvw flex-col items-center justify-center"></div>
+</Layout>
+
+<style slot="head">
+  :root {
+    --font-family: 'Outfit', 'Adjusted Arial Fallback';
+    --largeText: 1.5rem;
+    --mediumText: 1rem;
+    --smallText: 0.625rem;
+    --bgColor: #20293a;
+    --textColor: #e3e8ef;
+    --colorLabel: #aeb0ff;
+    --bgCard: #4a5567;
+  }
+
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
+  @font-face {
+    font-family: 'Outfit';
+    src: url('/fonts/Outfit/Outfit-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  html {
+    font-family: var(--font-family);
+  }
+</style>
