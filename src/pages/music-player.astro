@@ -6,7 +6,6 @@ import { songs } from '@/consts/songs'
 import PrevButton from '@/assets/music-player/svg/Stop_and_play_fill_back.svg'
 import NextButton from '@/assets/music-player/svg/Stop_and_play_fill.svg'
 import PlayButton from '@/assets/music-player/svg/Play_fill.svg'
-
 const currentSong = songs[0]
 ---
 
@@ -22,12 +21,11 @@ const currentSong = songs[0]
       <Image
         src={currentSong.img}
         alt={currentSong.title}
-        class="mb-4 aspect-auto rounded-2xl object-cover"
+        class="mb-4 aspect-auto rounded-2xl"
         width={306}
         height={228}
         id="coverImage"
         fetchpriority={'high'}
-        loading={'eager'}
       />
       <p id="songTitle">{currentSong.title}</p>
       <p id="songAuthor">{currentSong.author}</p>
@@ -46,7 +44,6 @@ const currentSong = songs[0]
             src={PrevButton}
             alt="Previous"
             fetchpriority={'high'}
-            loading={'eager'}
             class={'aspect-square'}
           /></button
         >
@@ -58,19 +55,12 @@ const currentSong = songs[0]
             src={PlayButton}
             alt="Play"
             fetchpriority={'high'}
-            loading={'eager'}
             id="playPauseIcon"
             class={'aspect-square'}
           />
         </button>
         <button id="nextButton">
-          <Image
-            src={NextButton}
-            alt="Next"
-            fetchpriority={'high'}
-            loading={'eager'}
-            class={'aspect-square'}
-          />
+          <Image src={NextButton} alt="Next" fetchpriority={'high'} class={'aspect-square'} />
         </button>
       </div>
     </div>
@@ -87,7 +77,7 @@ const currentSong = songs[0]
   })
 </script>
 
-<style>
+<style slot="head">
   :root {
     --font-family: 'Inter', 'Adjusted Arial Fallback';
     --nameFontSize: 1rem;
@@ -116,7 +106,7 @@ const currentSong = songs[0]
     background-color: var(--color1);
     transition: width 0.2s ease;
     border-radius: 0 8px 8px 0;
-    box-shadow: 0px 8px 16px rgba(201, 59, 118, 0.25);
+    filter: drop-shadow(0px 8px 16px rgba(201, 59, 118, 0.25));
   }
 
   #songTitle {
