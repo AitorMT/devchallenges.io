@@ -23,11 +23,6 @@ export default defineConfig({
 
   integrations: [
     Compress({
-      CSS: {
-        lightningcss: {
-          minify: true,
-        },
-      },
       HTML: {
         'html-minifier-terser': {
           collapseWhitespace: true,
