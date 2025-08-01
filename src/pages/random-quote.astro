@@ -1,6 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { fonts } from '@/consts/fonts'
+import Image from 'astro/components/Image.astro'
+import BgImage from '@/assets/random-quote/svg/bg-image-random-quote.svg'
+import Random from '@/assets/random-quote/svg/regroup.svg'
+import Share from '@/assets/random-quote/svg/link.svg'
 ---
 
 <Layout
@@ -8,38 +12,116 @@ import { fonts } from '@/consts/fonts'
   description="A random quote page from Devchallenges.io!"
   fonts={fonts.RandomQuote}
 >
-  <div class="flex h-dvh w-dvw flex-col items-center justify-center"></div>
+  <div
+    class="flex h-dvh w-dvw flex-col items-center justify-center gap-4 overflow-hidden bg-[var(--bgColor)] p-4"
+  >
+    <div
+      class="h-min[210px] relative flex w-full flex-col items-center overflow-hidden rounded-lg bg-[var(--bgCard)] sm:w-[500px]"
+    >
+      <p id="author"></p>
+      <div class="flex gap-2" id="tags"></div>
+      <p id="quote"></p>
+      <Image
+        src={BgImage}
+        alt="Card Image"
+        fetchpriority={'high'}
+        class={'aspect-video object-cover absolute h-full w-full'}
+      />
+    </div>
+    <div class="flex gap-3">
+      <button
+        class="btn flex gap-2 rounded-lg bg-[var(--bgCard)] p-2 transition hover:cursor-pointer hover:brightness-125 active:scale-95"
+        id="random-quote-button"
+      >
+        Random <Image
+          src={Random}
+          alt=""
+          class={'inline-block aspect-square'}
+          fetchpriority={'high'}
+        /></button
+      >
+      <button
+        class="btn flex gap-2 rounded-lg bg-[var(--bgCard)] p-2 transition hover:cursor-pointer hover:brightness-125 active:scale-95"
+        id="share-quote-button"
+        >Share <Image
+          src={Share}
+          alt=""
+          class={'inline-block aspect-square'}
+          fetchpriority={'high'}
+        /></button
+      >
+    </div>
+  </div>
+
+  <script src="../scripts/random-quote.js"></script>
+
+  <style slot="head">
+    :root {
+      --font-family: 'Outfit', 'Adjusted Arial Fallback';
+      --largeText: 1.5rem;
+      --mediumText: 1rem;
+      --smallText: 0.625rem;
+      --bgColor: #111629;
+      --textColor: #e3e8ef;
+      --colorLabel: #aeb0ff;
+      --bgCard: #20293a;
+      --boxShadow:
+        447px 304px 151px 0px rgba(0, 0, 0, 0), 286px 195px 138px 0px rgba(0, 0, 0, 0.01),
+        161px 110px 117px 0px rgba(0, 0, 0, 0.05), 72px 49px 87px 0px rgba(0, 0, 0, 0.09),
+        18px 12px 48px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    #author {
+      font-size: var(--mediumText);
+      font-weight: bold;
+      color: var(--textColor);
+      margin-top: 29px;
+    }
+
+    #tags {
+      margin-top: 8px;
+    }
+
+    #quote {
+      font-size: var(--largeText);
+      color: var(--textColor);
+      text-align: center;
+      text-wrap: balance;
+      z-index: 1;
+      margin-top: 20px;
+      margin-bottom: 29px;
+    }
+
+    .btn {
+      color: var(--textColor);
+      font-size: var(--mediumText);
+    }
+
+    @font-face {
+      font-family: 'Adjusted Arial Fallback';
+      src: local(Arial);
+      size-adjust: 112%;
+      ascent-override: 74%;
+      descent-override: normal;
+      line-gap-override: normal;
+    }
+
+    @font-face {
+      font-family: 'Outfit';
+      src: url('/fonts/Outfit/Outfit-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Outfit';
+      src: url('/fonts/Outfit/Outfit-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    html {
+      font-family: var(--font-family);
+    }
+  </style>
 </Layout>
-
-<style slot="head">
-  :root {
-    --font-family: 'Outfit', 'Adjusted Arial Fallback';
-    --largeText: 1.5rem;
-    --mediumText: 1rem;
-    --smallText: 0.625rem;
-    --bgColor: #20293a;
-    --textColor: #e3e8ef;
-    --colorLabel: #aeb0ff;
-    --bgCard: #4a5567;
-  }
-
-  @font-face {
-    font-family: 'Adjusted Arial Fallback';
-    src: local(Arial);
-    size-adjust: 112%;
-    ascent-override: 74%;
-    descent-override: normal;
-    line-gap-override: normal;
-  }
-
-  @font-face {
-    font-family: 'Outfit';
-    src: url('/fonts/Outfit/Outfit-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
-  }
-
-  html {
-    font-family: var(--font-family);
-  }
-</style>
