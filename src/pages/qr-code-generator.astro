@@ -1,0 +1,45 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+---
+
+<Layout
+  title="QR Code Generator - devchallenges.io"
+  description="A QR Code Generator page from Devchallenges.io!"
+  fonts={fonts.QrCodeGenerator}
+>
+  <div class="flex h-dvh w-dvw flex-col items-center justify-center gap-4 overflow-hidden p-4">
+  </div>
+
+  <style slot="head">
+    :root {
+      --font-family: 'Outfit', 'Adjusted Arial Fallback';
+      --fontBody: 1rem;
+      --color1: #f2f5f9;
+      --color2: #263fa9;
+      --color3: #030616;
+      --color4: #fafaf9;
+      --color5: #f8fafc1a;
+    }
+
+    @font-face {
+      font-family: 'Adjusted Arial Fallback';
+      src: local(Arial);
+      size-adjust: 112%;
+      ascent-override: 74%;
+      descent-override: normal;
+      line-gap-override: normal;
+    }
+
+    @font-face {
+      font-family: 'Outfit';
+      src: url('/fonts/Outfit/Outfit-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    html {
+      font-family: var(--font-family);
+    }
+  </style>
+</Layout>

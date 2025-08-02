@@ -5,4 +5,5 @@ export const fonts = {
   TestimonialPage: ['/fonts/Sora/Sora-Regular.woff2', '/fonts/Sora/Sora-Bold.woff2'],
   MusicPlayer: ['/fonts/Inter/Inter-Regular.woff2'],
   RandomQuote: ['/fonts/Outfit/Outfit-Regular.woff2', '/fonts/Outfit/Outfit-Bold.woff2'],
+  QrCodeGenerator: ['/fonts/Outfit/Outfit-Regular.woff2'],
 }
