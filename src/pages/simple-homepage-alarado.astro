@@ -1,0 +1,56 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+---
+
+<Layout
+  title="Simple Homepage Alarado - devchallenges.io"
+  description="A simple homepage layout from Devchallenges.io!"
+  fonts={fonts.SimpleHomepageAlarado}
+>
+  <div></div>
+</Layout>
+
+<style slot="head">
+  :root {
+    --font-family: 'Poppins', 'Adjusted Arial Fallback';
+    --fontSizeHeading: 3.75rem;
+    --fontSizeBody: 1.125rem;
+    --fontSizeButton: 1rem;
+    --fontSizeSmallText: 0.875rem;
+    --greenColor: #4ca154;
+    --backgroundWhiteMode: #f2f9fe;
+    --backgroundDarkMode: #111729;
+    --white: #ffffff;
+    --buttonColor: #2a4dd0;
+    --textHeaderColor: #223344;
+    --textHeaderColor2: #f2f2f2;
+  }
+
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins/Poppins-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins/Poppins-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  html {
+    font-family: var(--font-family);
+  }
+</style>
