@@ -3,6 +3,8 @@ import Layout from '@/layouts/Layout.astro'
 import { fonts } from '@/consts/fonts'
 import { Image } from 'astro:assets'
 import Logo from '@/assets/qr-code-generator/svg/Logo.svg'
+import DownloadImage from '@/assets/qr-code-generator/svg/Load_circle_duotone.svg'
+import ShareIcon from '@/assets/qr-code-generator/svg/link_alt.svg'
 ---
 
 <Layout
@@ -13,54 +15,91 @@ import Logo from '@/assets/qr-code-generator/svg/Logo.svg'
   <div
     class="flex h-dvh w-dvw flex-col items-center justify-center gap-4 overflow-hidden bg-[url('../assets/qr-code-generator/images/qa-bg-small.webp')] bg-cover bg-center bg-no-repeat p-4 lg:bg-[url('../assets/qr-code-generator/images/qa-bg.webp')]"
   >
-    <div class="flex w-full flex-col items-center justify-center gap-8">
+    {/** Input container */}
+    <div class="flex w-full flex-col items-center justify-center gap-8" id="input-container">
       <Image src={Logo} alt="QR Code Generator Logo" fetchpriority={'high'} />
       <div
         class="flex h-[68px] w-full flex-row justify-between gap-2 rounded-xl border-2 border-[var(--color2)] bg-[var(--color3)] p-[6px] md:w-[620px]"
       >
         <input
-          type="text"
-          placeholder="Enter URL"
+          id="qr-input"
+          type="url"
+          placeholder="Enter an URL"
           class="flex flex-[1] pl-[30px] text-[var(--color1)] outline-none placeholder:text-[var(--color1)]"
         />
         <button
+          id="generate-qr-btn"
+          type="button"
           class="h-full w-[140px] cursor-pointer rounded-xl bg-[var(--color2)] text-[var(--color1)] transition hover:brightness-125 active:scale-95"
           >QR code</button
         >
       </div>
     </div>
+
+    {/** QR Code Image */}
+    <div
+      class="flex hidden h-full w-full flex-col items-center justify-around gap-4"
+      id="qr-code-container"
+    >
+      <Image src={Logo} alt="QR Code Generator Logo" fetchpriority={'high'} />
+      <div class="rounded-full bg-[var(--color5)] p-8">
+        <div id="qr-code" class="rounded-3xl bg-[var(--color4)] p-7"></div>
+      </div>
+      <div class="flex w-full flex-row flex-wrap items-center justify-center gap-8">
+        <button
+          class="flex h-[56px] w-[186px] cursor-pointer items-center justify-center gap-2 rounded-lg bg-[var(--color2)] text-[var(--color1)] transition hover:brightness-125 active:scale-95"
+          type="button"
+          id="download-qr-btn"
+        >
+          Download <Image src={DownloadImage} alt="Download Icon" fetchpriority={'high'} />
+        </button>
+        <button
+          class="flex h-[56px] w-[186px] cursor-pointer items-center justify-center gap-2 rounded-lg bg-[var(--color2)] text-[var(--color1)] transition hover:brightness-125 active:scale-95"
+          type="button"
+          id="share-qr-btn"
+        >
+          Share <Image src={ShareIcon} alt="Share Icon" fetchpriority={'high'} />
+        </button>
+      </div>
+    </div>
+
+    <script
+      slot="head"
+      src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+      defer></script>
+    <script src="../scripts/qr-code-generator.js"></script>
+
+    <style slot="head">
+      :root {
+        --font-family: 'Outfit', 'Adjusted Arial Fallback';
+        --fontBody: 1rem;
+        --color1: #f2f5f9;
+        --color2: #263fa9;
+        --color3: #030616;
+        --color4: #fafaf9;
+        --color5: #f8fafc1a;
+      }
+
+      @font-face {
+        font-family: 'Adjusted Arial Fallback';
+        src: local(Arial);
+        size-adjust: 112%;
+        ascent-override: 74%;
+        descent-override: normal;
+        line-gap-override: normal;
+      }
+
+      @font-face {
+        font-family: 'Outfit';
+        src: url('/fonts/Outfit/Outfit-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      html {
+        font-family: var(--font-family);
+        font-size: var(--fontBody);
+      }
+    </style>
   </div>
-
-  <style slot="head">
-    :root {
-      --font-family: 'Outfit', 'Adjusted Arial Fallback';
-      --fontBody: 1rem;
-      --color1: #f2f5f9;
-      --color2: #263fa9;
-      --color3: #030616;
-      --color4: #fafaf9;
-      --color5: #f8fafc1a;
-    }
-
-    @font-face {
-      font-family: 'Adjusted Arial Fallback';
-      src: local(Arial);
-      size-adjust: 112%;
-      ascent-override: 74%;
-      descent-override: normal;
-      line-gap-override: normal;
-    }
-
-    @font-face {
-      font-family: 'Outfit';
-      src: url('/fonts/Outfit/Outfit-Regular.woff2') format('woff2');
-      font-weight: 400;
-      font-display: swap;
-    }
-
-    html {
-      font-family: var(--font-family);
-      font-size: var(--fontBody);
-    }
-  </style>
 </Layout>
