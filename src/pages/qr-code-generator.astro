@@ -1,6 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { fonts } from '@/consts/fonts'
+import { Image } from 'astro:assets'
+import Logo from '@/assets/qr-code-generator/svg/Logo.svg'
 ---
 
 <Layout
@@ -8,7 +10,25 @@ import { fonts } from '@/consts/fonts'
   description="A QR Code Generator page from Devchallenges.io!"
   fonts={fonts.QrCodeGenerator}
 >
-  <div class="flex h-dvh w-dvw flex-col items-center justify-center gap-4 overflow-hidden p-4">
+  <div
+    class="flex h-dvh w-dvw flex-col items-center justify-center gap-4 overflow-hidden bg-[url('../assets/qr-code-generator/images/qa-bg-small.webp')] bg-cover bg-center bg-no-repeat p-4 lg:bg-[url('../assets/qr-code-generator/images/qa-bg.webp')]"
+  >
+    <div class="flex w-full flex-col items-center justify-center gap-8">
+      <Image src={Logo} alt="QR Code Generator Logo" fetchpriority={'high'} />
+      <div
+        class="flex h-[68px] w-full flex-row justify-between gap-2 rounded-xl border-2 border-[var(--color2)] bg-[var(--color3)] p-[6px] md:w-[620px]"
+      >
+        <input
+          type="text"
+          placeholder="Enter URL"
+          class="flex flex-[1] pl-[30px] text-[var(--color1)] outline-none placeholder:text-[var(--color1)]"
+        />
+        <button
+          class="h-full w-[140px] cursor-pointer rounded-xl bg-[var(--color2)] text-[var(--color1)] transition hover:brightness-125 active:scale-95"
+          >QR code</button
+        >
+      </div>
+    </div>
   </div>
 
   <style slot="head">
@@ -40,6 +60,7 @@ import { fonts } from '@/consts/fonts'
 
     html {
       font-family: var(--font-family);
+      font-size: var(--fontBody);
     }
   </style>
 </Layout>
