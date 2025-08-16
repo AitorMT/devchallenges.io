@@ -41,15 +41,15 @@ const onClickShareButton = (shareBtnId, qrContainerId) => {
     const container = document.getElementById(qrContainerId)
     if (!container) return
 
-    const img = container.querySelector('img')
-
     try {
-      const response = await fetch(img.src)
-      const blob = await response.blob()
+      const value = document.getElementById('qr-input').value
+      if (!value) {
+        return
+      }
 
-      await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })])
+      await navigator.clipboard.writeText(value)
     } catch (err) {
-      console.error(err.message)
+      alert('Failed to copy text')
     }
   })
 }
