@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { fonts } from '@/consts/fonts'
-import Image from 'astro/components/Image.astro'
+import { Image } from 'astro:assets'
 import heroImageDesktop from '@/assets/business-blog-card/HeroImageDesktop.webp'
 import WhiteOverlay from '@/assets/business-blog-card/white-overlay.svg'
 import profilePicture from '@/assets/business-blog-card/avatar-image-business-card.webp'
@@ -12,40 +12,37 @@ import profilePicture from '@/assets/business-blog-card/avatar-image-business-ca
   description="A business blog card from Devchallenges.io!"
   fonts={fonts.BusinessBlogCard}
 >
-  <div
+  <main
     class="flex h-dvh w-dvw items-center justify-center overflow-hidden bg-[var(--background)] p-4"
   >
-    <div class="flex h-[545px] w-[418px] flex-col rounded-lg bg-[var(--bgCard)]">
+    <article class="flex h-[545px] w-[418px] flex-col rounded-lg bg-[var(--bgCard)]">
       <div class="relative">
         <Image
           src={heroImageDesktop}
-          alt="Business Blog Card"
+          alt="Business workspace with laptop and notepad"
           class="h-full w-full rounded-lg object-cover"
           fetchpriority="high"
-          loading="eager"
         />
-        <WhiteOverlay class={'absolute -bottom-0.5 left-0 w-full'} />
+        <WhiteOverlay class="absolute -bottom-0.5 left-0 w-full" aria-hidden="true" />
       </div>
       <div class="flex flex-col gap-3 px-8">
         <h1>Perfect solution for small business</h1>
         <p>Small businesses need to generate leads to grow. You can use tools like Ringy.</p>
       </div>
-      <hr class={'w-full border-[var(--background)] mt-7'} />
-      <div class="flex flex-[1] items-center gap-4 px-8">
+      <hr class="w-full border-[var(--background)] mt-7" />
+      <footer class="flex flex-[1] items-center gap-4 px-8">
         <Image
           src={profilePicture}
-          alt="Amy Burgess"
+          alt="Amy Burgess avatar"
           class="h-[48px] w-[48px] rounded-full border-[4px] border-[var(--background)]"
-          fetchpriority={'high'}
-          loading={'eager'}
         />
         <div>
           <p class="name">Amy Burgess</p>
           <p>Customer Manger, Solution Oy</p>
         </div>
-      </div>
-    </div>
-  </div>
+      </footer>
+    </article>
+  </main>
 </Layout>
 
 <style>

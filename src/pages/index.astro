@@ -2,9 +2,34 @@
 import { fixedTitle } from '@/consts/pagesTitles'
 import Layout from '@/layouts/Layout.astro'
 import { fonts } from '@/consts/fonts'
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'devchallenges.io',
+  url: 'https://devchallenges.aitormt.dev',
+  description: 'Proyectos frontend realizados de devchallenges.io — blog cards, music player, QR generator y más.',
+}
 ---
 
-<Layout title={fixedTitle} fonts={fonts.IndexPage} />
+<Layout title={fixedTitle} fonts={fonts.IndexPage} jsonLd={jsonLd}>
+  <main class="flex min-h-dvh flex-col items-center justify-center p-8">
+    <h1 class="mb-6 text-3xl font-bold text-gray-900">devchallenges.io</h1>
+    <p class="mb-8 max-w-lg text-center text-gray-600">
+      Proyectos frontend realizados de devchallenges.io.
+    </p>
+    <nav aria-label="Proyectos">
+      <ul class="flex flex-col gap-3">
+        <li><a href="/minimal-blog-card" class="text-blue-600 underline hover:text-blue-800">Minimal Blog Card</a></li>
+        <li><a href="/business-blog-card" class="text-blue-600 underline hover:text-blue-800">Business Blog Card</a></li>
+        <li><a href="/testimonial-page" class="text-blue-600 underline hover:text-blue-800">Testimonial Page</a></li>
+        <li><a href="/music-player" class="text-blue-600 underline hover:text-blue-800">Music Player</a></li>
+        <li><a href="/random-quote" class="text-blue-600 underline hover:text-blue-800">Random Quote</a></li>
+        <li><a href="/qr-code-generator" class="text-blue-600 underline hover:text-blue-800">QR Code Generator</a></li>
+      </ul>
+    </nav>
+  </main>
+</Layout>
 
 <style>
   @font-face {
@@ -28,5 +53,9 @@ import { fonts } from '@/consts/fonts'
     src: url('/fonts/Inter/Inter-Bold.woff2') format('woff2');
     font-weight: 600;
     font-display: swap;
+  }
+
+  html {
+    font-family: 'Inter', 'Adjusted Arial Fallback';
   }
 </style>

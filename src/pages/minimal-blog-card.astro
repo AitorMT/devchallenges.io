@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { fonts } from '@/consts/fonts'
-import Image from 'astro/components/Image.astro'
+import { Image } from 'astro:assets'
 import cactus from '@/assets/blog-card/Cactus.webp'
 ---
 
@@ -10,15 +10,15 @@ import cactus from '@/assets/blog-card/Cactus.webp'
   description="A minimal blog card from Devchallenges.io!"
   fonts={fonts.MinimalBlogCard}
 >
-  <div class="flex h-dvh w-dvw items-center justify-center overflow-hidden bg-[var(--bgColor)] p-4">
-    <div
+  <main class="flex h-dvh w-dvw items-center justify-center overflow-hidden bg-[var(--bgColor)] p-4">
+    <article
       class="relative flex h-[387px] w-[367px] flex-col gap-4 overflow-hidden rounded-lg bg-[var(--bgColor)] p-4 pb-5 shadow-[var(--boxShadow)]"
     >
       <Image
         src={cactus}
-        alt={'Cactus'}
-        class={'rounded-lg w-full h-full  object-cover'}
-        fetchpriority={'high'}
+        alt="Cactus plant on a minimalist desk"
+        class="rounded-lg w-full h-full object-cover"
+        fetchpriority="high"
       />
       <div
         class="flex w-fit items-center justify-center rounded-full bg-[rgba(var(--colorTag),0.05)] px-4 py-1"
@@ -34,8 +34,8 @@ import cactus from '@/assets/blog-card/Cactus.webp'
       </div>
       <hr class="w-[calc(100% + 2rem)] -mx-4 border-[var(--colorHr)]" />
       <p class="author">Annie Spratt</p>
-    </div>
-  </div>
+    </article>
+  </main>
 </Layout>
 
 <style>

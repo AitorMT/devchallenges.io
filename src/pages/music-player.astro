@@ -14,7 +14,7 @@ const currentSong = songs[0]
   description="A music player page from Devchallenges.io!"
   fonts={fonts.MusicPlayer}
 >
-  <div
+  <main
     class="grid aspect-square h-dvh w-dvw place-items-center overflow-hidden bg-[url('../assets/music-player/images/gradient-bg-small.webp')] bg-cover bg-center bg-no-repeat sm:bg-[url('../assets/music-player/images/gradient-bg.webp')]"
   >
     <div class="bg-[var(--color2)]/95 flex h-[513px] w-[346px] flex-col rounded-2xl p-5">
@@ -25,7 +25,7 @@ const currentSong = songs[0]
         width={306}
         height={228}
         id="coverImage"
-        fetchpriority={'high'}
+        fetchpriority="high"
       />
       <p id="songTitle">{currentSong.title}</p>
       <p id="songAuthor">{currentSong.author}</p>
@@ -34,47 +34,41 @@ const currentSong = songs[0]
           <span id="currentTime">0:00</span>
           <span id="totalTime">0:00</span>
         </div>
-        <div class="progress-container">
+        <div class="progress-container" role="progressbar" aria-label="Song progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <div class="progress-fill" id="progressFill"></div>
         </div>
       </div>
       <div class="flex items-center justify-center gap-4">
-        <button id="prevButton"
-          ><Image
-            src={PrevButton}
-            alt="Previous"
-            fetchpriority={'high'}
-            class={'aspect-square'}
-          /></button
-        >
+        <button id="prevButton" type="button" aria-label="Previous song">
+          <PrevButton aria-hidden="true" />
+        </button>
         <button
           id="playButton"
-          class={'bg-[var(--color1)] p-2 rounded-full shadow-[var(--buttonShadow)]'}
+          type="button"
+          aria-label="Play"
+          class="bg-[var(--color1)] p-2 rounded-full shadow-[var(--buttonShadow)]"
         >
           <Image
             src={PlayButton}
-            alt="Play"
-            fetchpriority={'high'}
+            alt=""
             id="playPauseIcon"
-            class={'aspect-square'}
+            class="aspect-square"
           />
         </button>
-        <button id="nextButton">
-          <Image src={NextButton} alt="Next" fetchpriority={'high'} class={'aspect-square'} />
+        <button id="nextButton" type="button" aria-label="Next song">
+          <NextButton aria-hidden="true" />
         </button>
       </div>
     </div>
-  </div>
+  </main>
 </Layout>
 
 <script>
-  import { initMusicPlayer } from '../scripts/music-player.js'
+  import { initMusicPlayer } from '../scripts/music-player'
   import playIconUrl from '../assets/music-player/svg/Play_fill.svg?url'
   import pauseIconUrl from '../assets/music-player/svg/Stop_fill.svg?url'
 
-  document.addEventListener('DOMContentLoaded', () => {
-    initMusicPlayer(playIconUrl, pauseIconUrl)
-  })
+  initMusicPlayer(playIconUrl, pauseIconUrl)
 </script>
 
 <style slot="head">

@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { fonts } from '@/consts/fonts'
-import Image from 'astro/components/Image.astro'
+import { Image } from 'astro:assets'
 import BgImage from '@/assets/random-quote/svg/bg-image-random-quote.svg'
 import Random from '@/assets/random-quote/svg/regroup.svg'
 import Share from '@/assets/random-quote/svg/link.svg'
@@ -12,48 +12,39 @@ import Share from '@/assets/random-quote/svg/link.svg'
   description="A random quote page from Devchallenges.io!"
   fonts={fonts.RandomQuote}
 >
-  <div
+  <main
     class="flex h-dvh w-dvw flex-col items-center justify-center gap-4 overflow-hidden bg-[var(--bgColor)] p-4"
   >
-    <div
+    <article
       class="h-min[210px] relative flex w-full flex-col items-center overflow-hidden rounded-lg bg-[var(--bgCard)] sm:w-[500px]"
     >
       <p id="author"></p>
       <div class="flex gap-2" id="tags"></div>
-      <p id="quote"></p>
-      <Image
-        src={BgImage}
-        alt="Card Image"
-        fetchpriority={'high'}
-        class={'aspect-video object-cover absolute h-full w-full'}
+      <blockquote id="quote"></blockquote>
+      <BgImage
+        aria-hidden="true"
+        class="aspect-video object-cover absolute h-full w-full"
       />
-    </div>
-    <div class="flex gap-3">
+    </article>
+    <div class="flex gap-3" role="group" aria-label="Quote actions">
       <button
         class="btn flex gap-2 rounded-lg bg-[var(--bgCard)] p-2 transition hover:cursor-pointer hover:brightness-125 active:scale-95"
         id="random-quote-button"
+        type="button"
       >
-        Random <Image
-          src={Random}
-          alt=""
-          class={'inline-block aspect-square'}
-          fetchpriority={'high'}
-        /></button
-      >
+        Random <Random aria-hidden="true" class="inline-block aspect-square" />
+      </button>
       <button
         class="btn flex gap-2 rounded-lg bg-[var(--bgCard)] p-2 transition hover:cursor-pointer hover:brightness-125 active:scale-95"
         id="share-quote-button"
-        >Share <Image
-          src={Share}
-          alt=""
-          class={'inline-block aspect-square'}
-          fetchpriority={'high'}
-        /></button
+        type="button"
       >
+        Share <Share aria-hidden="true" class="inline-block aspect-square" />
+      </button>
     </div>
-  </div>
+  </main>
 
-  <script src="../scripts/random-quote.js"></script>
+  <script src="../scripts/random-quote.ts"></script>
 
   <style slot="head">
     :root {

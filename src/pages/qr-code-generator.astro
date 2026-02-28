@@ -12,15 +12,16 @@ import ShareIcon from '@/assets/qr-code-generator/svg/link_alt.svg'
   description="A QR Code Generator page from Devchallenges.io!"
   fonts={fonts.QrCodeGenerator}
 >
-  <div
+  <main
     class="flex h-dvh w-dvw flex-col items-center justify-center gap-4 overflow-hidden bg-[url('../assets/qr-code-generator/images/qa-bg-small.webp')] bg-cover bg-center bg-no-repeat p-4 lg:bg-[url('../assets/qr-code-generator/images/qa-bg.webp')]"
   >
     {/** Input container */}
     <div class="flex w-full flex-col items-center justify-center gap-8" id="input-container">
-      <Image src={Logo} alt="QR Code Generator Logo" fetchpriority={'high'} />
+      <Logo aria-label="QR Code Generator" />
       <div
         class="flex h-[68px] w-full flex-row justify-between gap-2 rounded-2xl border-2 border-[var(--color2)] bg-[var(--color3)] p-[6px] md:w-[620px]"
       >
+        <label for="qr-input" class="sr-only">URL to encode</label>
         <input
           id="qr-input"
           type="url"
@@ -31,19 +32,18 @@ import ShareIcon from '@/assets/qr-code-generator/svg/link_alt.svg'
           id="generate-qr-btn"
           type="button"
           class="h-full w-[140px] cursor-pointer rounded-xl bg-[var(--color2)] text-[var(--color1)] transition hover:brightness-125 active:scale-95"
-          >QR code</button
-        >
+        >QR code</button>
       </div>
     </div>
 
     {/** QR Code Image */}
     <div
-      class="flex hidden h-full w-full flex-col items-center justify-around gap-4"
+      class="hidden h-full w-full flex-col items-center justify-around gap-4"
       id="qr-code-container"
     >
-      <Image src={Logo} alt="QR Code Generator Logo" fetchpriority={'high'} />
+      <Logo aria-label="QR Code Generator" />
       <div class="rounded-full bg-[var(--color5)] p-8">
-        <div id="qr-code" class="rounded-3xl bg-[var(--color4)] p-7"></div>
+        <div id="qr-code" class="rounded-3xl bg-[var(--color4)] p-7" role="img" aria-label="Generated QR code"></div>
       </div>
       <div class="flex w-full flex-row flex-wrap items-center justify-center gap-8">
         <button
@@ -51,14 +51,14 @@ import ShareIcon from '@/assets/qr-code-generator/svg/link_alt.svg'
           type="button"
           id="download-qr-btn"
         >
-          Download <Image src={DownloadImage} alt="Download Icon" fetchpriority={'high'} />
+          Download <DownloadImage aria-hidden="true" />
         </button>
         <button
           class="flex h-[56px] w-[186px] cursor-pointer items-center justify-center gap-2 rounded-lg bg-[var(--color2)] text-[var(--color1)] transition hover:brightness-125 active:scale-95"
           type="button"
           id="share-qr-btn"
         >
-          Share <Image src={ShareIcon} alt="Share Icon" fetchpriority={'high'} />
+          Share <ShareIcon aria-hidden="true" />
         </button>
       </div>
     </div>
@@ -67,7 +67,7 @@ import ShareIcon from '@/assets/qr-code-generator/svg/link_alt.svg'
       slot="head"
       src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
       defer></script>
-    <script src="../scripts/qr-code-generator.js"></script>
+    <script src="../scripts/qr-code-generator.ts"></script>
 
     <style slot="head">
       :root {
