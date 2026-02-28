@@ -1,9 +1,6 @@
 ---
-import { ClientRouter } from 'astro:transitions'
-
 import '@/styles/global.css'
-import { fixedTitle } from '@/consts/pagesTitles'
-
+import { fixedTitle, siteName } from '@/consts/pagesTitles'
 
 interface Props {
   title: string
@@ -11,56 +8,65 @@ interface Props {
   description?: string
   canonical?: string
   robots?: string
+  jsonLd?: Record<string, unknown>
 }
+
+const siteUrl = 'https://devchallenges.aitormt.dev'
 
 const {
   title = fixedTitle,
   fonts,
-  description = 'Página principal de todos los proyectos realizados de devchallenges.io',
-  canonical,
-  robots,
+  description = 'Proyectos frontend realizados de devchallenges.io — blog cards, music player, QR generator y más.',
+  canonical = new URL(Astro.url.pathname, siteUrl).href,
+  robots = 'index, follow',
+  jsonLd,
 } = Astro.props
-
 ---
 
 <html lang="es">
-	<head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>
-          {title}
-        </title>
-    
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
-        {
-          fonts.map((font) => (
-            <link
-              rel="preload"
-              href={font}
-              as="font"
-              type="font/woff2"
-              crossorigin="anonymous"
-            />
-          ))
-        }
-        <meta name="description" content={description} />
-        {canonical && <link rel="canonical" href={canonical} />}
-        {robots && <meta name="robots" content={robots} />}
-    
-        <meta property="og:url" content="https://devchallenges.aitormt.dev" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta
-          property="og:description"
-          content={description}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    {
+      fonts.map((font) => (
+        <link
+          rel="preload"
+          href={font}
+          as="font"
+          type="font/woff2"
+          crossorigin="anonymous"
         />
-        <meta property="og:image" content="https://devchallenges.aitormt.dev/og.jpg" />
-        <meta property="og:locale" content="es_ES" />
-        <meta property="og:site_name" content={title} />
-        <ClientRouter/>
-	</head>
-	<body>
-		<slot />
-	</body>
+      ))
+    }
+
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={robots} />
+
+    <!-- Open Graph -->
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content={siteName} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>

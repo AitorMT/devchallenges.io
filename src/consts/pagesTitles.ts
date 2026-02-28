@@ -1,1 +1,2 @@
-export const fixedTitle: string = 'Página principal - devchallenges.io'
+export const siteName = 'devchallenges.io' as const
+export const fixedTitle = `Página principal - ${siteName}` as const

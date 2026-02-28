@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config'
 
 import tailwindcss from '@tailwindcss/vite'
 import Compress from '@playform/compress'
+import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
   site: 'https://devchallenges.aitormt.dev',
@@ -17,11 +18,17 @@ export default defineConfig({
 
   compressHTML: true,
 
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport',
+  },
+
   devToolbar: {
     enabled: false,
   },
 
   integrations: [
+    sitemap(),
     Compress({
       HTML: {
         'html-minifier-terser': {
