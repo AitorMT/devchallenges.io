@@ -1,17 +1,134 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import { fonts } from '@/consts/fonts'
+import Logo from '@/assets/contact-page/Logo.svg'
+import ExpandDown from '@/assets/contact-page/Expand_down.svg'
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Sales',
+  description: 'Request business pricing and contact sales for landing pages and product strategy.',
+  url: 'https://devchallenges.aitormt.dev/contact-page',
+};
 ---
 
 <Layout
   title="Contact Page - devchallenges.io"
   description="Contact Page for devchallenges.io"
   fonts={fonts.ContactPage}
+  jsonLd={jsonLd}
 >
-  <main
-    class="flex h-dvh w-dvw items-center justify-center overflow-hidden bg-[var(--background)] p-4"
-  >
- 
+  <main class="relative flex min-h-dvh w-full overflow-hidden bg-[url('../assets/contact-page/background.svg')] bg-cover bg-center bg-no-repeat bg-[color:var(--color1)]">
+
+    <div class="relative z-10 flex min-h-dvh w-full flex-col px-4 py-6 sm:px-6 lg:px-10">
+      <header class="flex justify-start">
+        <Logo aria-label="Becv" class="h-[30px] w-[101px] shrink-0" />
+      </header>
+
+      <section
+        class="mx-auto flex w-full max-w-[900px] flex-1 flex-col items-center justify-center gap-8 py-10 text-center sm:gap-10 sm:py-14"
+        aria-labelledby="contact-heading"
+      >
+        <div class="flex max-w-[760px] flex-col gap-4 sm:gap-5">
+          <h1 id="contact-heading" class="text-[2.5rem] leading-[1.05] font-extrabold tracking-[-0.04em] text-[var(--white)] sm:text-[3.5rem] lg:text-[4rem]">
+            Interested in our business pricing?
+          </h1>
+          <p class="mx-auto max-w-[650px] text-[1.125rem] leading-[1.45] font-semibold text-[var(--white)] sm:text-[1.5rem]">
+            Fill out the form to view details and we’ll contact you as soon as possible.
+          </p>
+        </div>
+
+        <form
+            class="w-full max-w-[788px] rounded-[24px] bg-[var(--secondWhite)] px-4 py-5 shadow-[0_28px_60px_rgba(17,23,41,0.16)] backdrop-blur-[10px] sm:px-5 sm:py-6 lg:px-6 lg:py-7"
+            action="#"
+            method="post"
+            aria-labelledby="contact-heading"
+          >
+            <div class="grid gap-4 sm:grid-cols-2 sm:gap-4 lg:gap-5">
+              <label for="name" class="flex flex-col gap-1.5 text-left text-[0.875rem] font-medium text-[var(--white)]/90">
+                <span>Name</span>
+                <input
+                  id="name"
+                  name="name"
+                  class="h-14 rounded-2xl border-0 bg-[var(--white)] px-5 text-[1rem] font-semibold text-[var(--color2)] outline-none ring-0 placeholder:text-black"
+                  type="text"
+                  placeholder="Ethan Johnson"
+                  aria-required="true"
+                  required
+                />
+              </label>
+
+            <label for="companyEmail" class="flex flex-col gap-1.5 text-left text-[0.875rem] font-medium text-[var(--white)]/90">
+              <span>Company Email</span>
+              <input
+                id="companyEmail"
+                name="companyEmail"
+                class="h-14 rounded-2xl border-0 bg-[var(--white)] px-5 text-[1rem] font-semibold text-[var(--color2)] outline-none ring-0 placeholder:text-black"
+                type="email"
+                placeholder="ethan@johnson.com"
+                aria-required="true"
+                required
+              />
+            </label>
+
+            <label class="flex flex-col gap-1.5 text-left text-[0.875rem] font-medium text-[var(--white)]/90">
+              <span>Company Size</span>
+              <div class="relative">
+                <select
+                  class="h-14 w-full appearance-none rounded-2xl border-0 bg-[var(--white)] px-5 pr-14 text-[1rem] font-semibold text-[var(--color2)] outline-none ring-0 "
+                  aria-label="Company Size"
+                >
+                  <option selected>50-100 employees</option>
+                  <option>1-10 employees</option>
+                  <option>11-50 employees</option>
+                  <option>100+ employees</option>
+                </select>
+                <ExpandDown aria-hidden="true" class="pointer-events-none absolute right-5 top-1/2 h-6 w-6 -translate-y-1/2" />
+              </div>
+            </label>
+
+            <label class="flex flex-col gap-1.5 text-left text-[0.875rem] font-medium text-[var(--white)]/90">
+              <span>Subject</span>
+              <div class="relative">
+                <select
+                  class="h-14 w-full appearance-none rounded-2xl border-0 bg-[var(--white)] px-5 pr-14 text-[1rem] font-semibold text-[var(--color2)] outline-none ring-0 "
+                  aria-label="Subject"
+                >
+                  <option selected>Building Landing pages</option>
+                  <option>Website redesign</option>
+                  <option>Product strategy</option>
+                  <option>Other</option>
+                </select>
+                <ExpandDown aria-hidden="true" class="pointer-events-none absolute right-5 top-1/2 h-6 w-6 -translate-y-1/2" />
+              </div>
+            </label>
+
+            <label for="message" class="flex flex-col gap-1.5 text-left text-[0.875rem] font-medium text-[var(--white)]/90 sm:col-span-2">
+              <span>Message</span>
+              <textarea
+                id="message"
+                name="message"
+                class="min-h-[176px] rounded-2xl border-0 bg-[var(--white)] px-5 py-4 text-[1rem] font-semibold text-[var(--color2)] outline-none ring-0 placeholder:text-black"
+                placeholder="Tell us about your project"
+                aria-required="true"
+                required
+              ></textarea>
+            </label>
+          </div>
+
+          <div class="mt-5 sm:mt-6">
+            <button
+              class="h-14 w-full rounded-2xl bg-[var(--white)] text-[1rem] font-extrabold text-[var(--color1)] transition duration-200 hover:brightness-95 active:scale-[0.99]"
+              type="submit"
+              aria-label="Submit contact form"
+            >
+              Contact Sales
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
   </main>
 </Layout>
 
@@ -19,7 +136,7 @@ import { fonts } from '@/consts/fonts'
   :root {
     --font-family: 'Be Vietnam Pro', 'Adjusted Arial Fallback';
     --white: #fff;
-    --secondWhite: #FFFFFF33;
+    --secondWhite: #ffffff33;
     --color1: #4036A9;
     --color2: #111729;
     --color3: #CDD5E0;
