@@ -1,0 +1,72 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Multi-Step Register Form',
+  description: 'A multi-step registration form from Devchallenges.io!',
+  url: 'https://devchallenges.aitormt.dev/multistep-register-form',
+};
+---
+
+
+
+<Layout
+  title="Multi-Step Register Form - devchallenges.io"
+  description="A multi-step registration form from Devchallenges.io!"
+  fonts={fonts.MultiStepRegisterForm}
+  jsonLd={jsonLd}
+>
+  <main class="flex h-dvh w-dvw items-center justify-center overflow-hidden p-4">
+   
+  </main>
+</Layout>
+
+<style>
+  :root {
+    --font-family: 'Inter', 'Adjusted Arial Fallback';
+    --color1:#5425AF;
+    --color2:#845EEE;
+    --color3:#121826;
+    --color4:#212936;
+    --color5:#394150;
+    --color6:#4D5562;
+    --color7:#A1A1A9;
+    --color8:#E5E7EB;
+    --color9:#845EEE4D;
+    --fontHeading:1.25rem;
+    --tabText: 0.875rem;
+    --fontBody: 1rem;
+    --smallText: 0.75rem;
+  }
+
+ 
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter/Inter-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter/Inter-Bold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  html {
+    font-family: var(--font-family);
+  }
+</style>

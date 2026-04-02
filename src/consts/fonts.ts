@@ -6,5 +6,6 @@ export const fonts = {
   MusicPlayer: ['/fonts/Inter/Inter-Regular.woff2'],
   RandomQuote: ['/fonts/Outfit/Outfit-Regular.woff2', '/fonts/Outfit/Outfit-Bold.woff2'],
   QrCodeGenerator: ['/fonts/Outfit/Outfit-Regular.woff2'],
-  ContactPage: ['/fonts/BeVietnamPro/BeVietnamPro-Regular.woff2']
+  ContactPage: ['/fonts/BeVietnamPro/BeVietnamPro-Regular.woff2'],
+  MultiStepRegisterForm: ['/fonts/Inter/Inter-Regular.woff2', '/fonts/Inter/Inter-Bold.woff2']
 }
