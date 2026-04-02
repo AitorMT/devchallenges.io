@@ -1,0 +1,49 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fonts } from '@/consts/fonts'
+---
+
+<Layout
+  title="Contact Page - devchallenges.io"
+  description="Contact Page for devchallenges.io"
+  fonts={fonts.ContactPage}
+>
+  <main
+    class="flex h-dvh w-dvw items-center justify-center overflow-hidden bg-[var(--background)] p-4"
+  >
+ 
+  </main>
+</Layout>
+
+<style>
+  :root {
+    --font-family: 'Be Vietnam Pro', 'Adjusted Arial Fallback';
+    --white: #fff;
+    --secondWhite: #FFFFFF33;
+    --color1: #4036A9;
+    --color2: #111729;
+    --color3: #CDD5E0;
+    --color4: #B4436D;
+  }
+
+  
+  @font-face {
+    font-family: 'Adjusted Arial Fallback';
+    src: local(Arial);
+    size-adjust: 112%;
+    ascent-override: 74%;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
+  @font-face {
+    font-family: 'Be Vietnam Pro';
+    src: url('/fonts/BeVietnamPro/BeVietnamPro-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  html {
+    font-family: var(--font-family);
+  }
+</style>
